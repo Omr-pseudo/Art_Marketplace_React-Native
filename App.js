@@ -1,7 +1,7 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- *
+ *5
  * @format
  * @flow strict-local
  */
@@ -13,20 +13,18 @@ import {
   View,
 } from 'react-native';
 
+import {NavigationContainer} from '@react-navigation/native';
+
+import Tabs from './components/ui/navigation/navbar/tabs';
+
 const App = () => {
   
   return (
-        <View>
-        <Text style={styles.title}>Hello World</Text>       
-        </View>
+        <NavigationContainer>
+          <Tabs/>
+        </NavigationContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-  }
-});
 
 export default App;
