@@ -30,6 +30,12 @@
 		B1C550462DFE4998A7365F8F /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FCEDE3E868246F3939BCA52 /* Octicons.ttf */; };
 		936CB16C28AB4CDB86B1CF5E /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 182DCC74935B4EA893DE04E1 /* SimpleLineIcons.ttf */; };
 		1C883ACD6C4640468C0569D0 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B10D93F155C34499A886D2BB /* Zocial.ttf */; };
+		19C03613096B455D81B658D7 /* HeartlandSans.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8505702A10674D6FAB3563F6 /* HeartlandSans.otf */; };
+		63176FDE715240909B0DFDAC /* LeagueSpartan-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2D86A3711264AAD86AC3D23 /* LeagueSpartan-VariableFont_wght.ttf */; };
+		7106B68D00E743BAAEA9C022 /* SpaceMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC007E890FC34AD0BECFA2F4 /* SpaceMono-Bold.ttf */; };
+		95CF389EC1E64E188FE49A11 /* SpaceMono-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51A06E5D6F9F4FADA706D8F5 /* SpaceMono-BoldItalic.ttf */; };
+		650CBCF7E06345359D37ED61 /* SpaceMono-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C4EBF406AC4BEFACB020CA /* SpaceMono-Italic.ttf */; };
+		F2F5251B717C426B83E997FA /* SpaceMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEF2B206AF414B1E9596DAD5 /* SpaceMono-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +82,12 @@
 		3FCEDE3E868246F3939BCA52 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		182DCC74935B4EA893DE04E1 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		B10D93F155C34499A886D2BB /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8505702A10674D6FAB3563F6 /* HeartlandSans.otf */ = {isa = PBXFileReference; name = "HeartlandSans.otf"; path = "../assets/fonts/HeartlandSans.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B2D86A3711264AAD86AC3D23 /* LeagueSpartan-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "LeagueSpartan-VariableFont_wght.ttf"; path = "../assets/fonts/LeagueSpartan-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DC007E890FC34AD0BECFA2F4 /* SpaceMono-Bold.ttf */ = {isa = PBXFileReference; name = "SpaceMono-Bold.ttf"; path = "../assets/fonts/SpaceMono-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		51A06E5D6F9F4FADA706D8F5 /* SpaceMono-BoldItalic.ttf */ = {isa = PBXFileReference; name = "SpaceMono-BoldItalic.ttf"; path = "../assets/fonts/SpaceMono-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A2C4EBF406AC4BEFACB020CA /* SpaceMono-Italic.ttf */ = {isa = PBXFileReference; name = "SpaceMono-Italic.ttf"; path = "../assets/fonts/SpaceMono-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FEF2B206AF414B1E9596DAD5 /* SpaceMono-Regular.ttf */ = {isa = PBXFileReference; name = "SpaceMono-Regular.ttf"; path = "../assets/fonts/SpaceMono-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +212,12 @@
 				3FCEDE3E868246F3939BCA52 /* Octicons.ttf */,
 				182DCC74935B4EA893DE04E1 /* SimpleLineIcons.ttf */,
 				B10D93F155C34499A886D2BB /* Zocial.ttf */,
+				8505702A10674D6FAB3563F6 /* HeartlandSans.otf */,
+				B2D86A3711264AAD86AC3D23 /* LeagueSpartan-VariableFont_wght.ttf */,
+				DC007E890FC34AD0BECFA2F4 /* SpaceMono-Bold.ttf */,
+				51A06E5D6F9F4FADA706D8F5 /* SpaceMono-BoldItalic.ttf */,
+				A2C4EBF406AC4BEFACB020CA /* SpaceMono-Italic.ttf */,
+				FEF2B206AF414B1E9596DAD5 /* SpaceMono-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -317,6 +335,12 @@
 				B1C550462DFE4998A7365F8F /* Octicons.ttf in Resources */,
 				936CB16C28AB4CDB86B1CF5E /* SimpleLineIcons.ttf in Resources */,
 				1C883ACD6C4640468C0569D0 /* Zocial.ttf in Resources */,
+				19C03613096B455D81B658D7 /* HeartlandSans.otf in Resources */,
+				63176FDE715240909B0DFDAC /* LeagueSpartan-VariableFont_wght.ttf in Resources */,
+				7106B68D00E743BAAEA9C022 /* SpaceMono-Bold.ttf in Resources */,
+				95CF389EC1E64E188FE49A11 /* SpaceMono-BoldItalic.ttf in Resources */,
+				650CBCF7E06345359D37ED61 /* SpaceMono-Italic.ttf in Resources */,
+				F2F5251B717C426B83E997FA /* SpaceMono-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
