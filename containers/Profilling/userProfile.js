@@ -1,38 +1,34 @@
 import React from 'react';
 
-import {StyleSheet} from 'react-native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {Text, Surface} from 'react-native-paper'; 
 
-import LinearGradient from 'react-native-linear-gradient';
+import ProfileScreen from '../../screens/profile/profilescreen';
 
-const Profile = () => {
+import UserDetailScreen from '../../screens/profile/userdetailscreen';
 
-    return(
-        <LinearGradient colors={["#FBD3E9","#BB377D"]}  style={styles.container}>
-            <Surface style={styles.surface} elevation={5}>
-                <Text style={{fontSize:20}}>Profile</Text>
-            </Surface>
-        </LinearGradient>
+import CreateScreen from '../../screens/profile/createscreen';
+
+import UpdateScreen from '../../screens/profile/updatescreen';
+
+import ComplainScreen from '../../screens/complain/complainscreen';
+
+
+const Profile = ({navigation}) => {
+
+    const Stack = createNativeStackNavigator();
+
+
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name='ProfileScreen' component={ProfileScreen} options={{headerShown:false, headerTintColor:"#fff",headerStyle:{backgroundColor:"#de86ff"}}}/>
+            <Stack.Screen name="UserDetailScreen" component={UserDetailScreen} options={{headerTitle:"Details", headerTintColor:"#fff",headerStyle:{backgroundColor:"#de86ff"}}}/>
+            <Stack.Screen name="CreateScreen" component={CreateScreen} options={{headerTitle:"Create", headerTintColor:"#fff",headerStyle:{backgroundColor:"#de86ff"}}}/>
+            <Stack.Screen name="UpdateScreen" component={UpdateScreen} options={{headerTitle:"Update", headerTintColor:"#fff",headerStyle:{backgroundColor:"#de86ff"}}}/>
+            <Stack.Screen name="ComplainScreen" component={ComplainScreen} options={{headerTitle:"Complain", headerTintColor:"#fff",headerStyle:{backgroundColor:"#de86ff"}}}/>
+        </Stack.Navigator>
+
     )
 }
-
-const styles = StyleSheet.create({
-
-    container: {
-        flex:1,
-        backgroundColor:"#AA1ABD",
-        justifyContent:"center",
-        alignItems:"center"
-    },
-    surface: {
-        padding: 8,
-        height: 100,
-        width: 300,
-        borderRadius:12,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }
-})
 
 export default Profile;

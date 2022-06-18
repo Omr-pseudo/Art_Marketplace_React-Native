@@ -1,38 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import {StyleSheet} from 'react-native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {Text, Surface} from 'react-native-paper'; 
 
-import LinearGradient from 'react-native-linear-gradient';
+
+import HomeScreen from '../../screens/home/homescreen';
+
+import ProductDetailScreen from '../../screens/home/productdetailScreen';
+
+import ComplainScreen from '../../screens/complain/complainscreen';
+
 
 const Home = () => {
 
+    const Stack = createNativeStackNavigator();
+    
+
     return(
-        <LinearGradient colors={["#FBD3E9","#BB377D"]}  style={styles.container}>
-            <Surface style={styles.surface} elevation={5}>
-                <Text style={{fontSize:20}}>Home</Text>
-            </Surface>
-        </LinearGradient>
+            <Stack.Navigator>
+                <Stack.Screen name='HomeScreen' component={HomeScreen} options={{headerShown:false, headerTintColor:"#fff",headerStyle:{backgroundColor:"#de86ff"}}}/>
+                <Stack.Screen name='ProductDetailScreen' component={ProductDetailScreen} options={{headerTitle:"Details", headerTintColor:"#fff",headerStyle:{backgroundColor:"#de86ff"}}} /> 
+                <Stack.Screen name="ComplainScreen" component={ComplainScreen} options={{headerTitle:"Complain", headerTintColor:"#fff",headerStyle:{backgroundColor:"#de86ff"}}}/>
+            </Stack.Navigator>
+        
+
     )
 }
-
-const styles = StyleSheet.create({
-
-    container: {
-        flex:1,
-        backgroundColor:"#AA1ABD",
-        justifyContent:"center",
-        alignItems:"center"
-    },
-    surface: {
-        padding: 8,
-        height: 100,
-        width: 300,
-        borderRadius:12,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }
-})
 
 export default Home;

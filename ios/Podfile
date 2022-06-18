@@ -21,6 +21,12 @@ target 'Art_MarketPlace' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
+  pod 'RNInstabug', :path => '../node_modules/instabug-reactnative'
+
   target 'Art_MarketPlaceTests' do
     inherit! :complete
     # Pods for testing
