@@ -6,9 +6,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 
 
+import Header from '../../header/header';
+
 import Home from '../../../../containers/Home/home';
 
-import Cart from '../../../../containers/Cart/cart';
+import Cart from "../../../../containers/Cart/cart";
 
 import Profile from '../../../../containers/Profilling/userProfile';
 
@@ -25,12 +27,12 @@ const CustomTabBarButton = ({children, onPress}) => (
         }}
     >
         <View style={{
-            width:90,
-            height:90,
-            borderRadius: 45,
+            width:100,
+            height:100,
+            borderRadius: 65,
             borderWidth:8,
             borderColor:"#fff",
-            backgroundColor: '#BB377D',
+            backgroundColor: '#6b0191',
             elevation:5
         }}>
             {children}
@@ -59,22 +61,19 @@ const Tabs = () => {
             <Tab.Screen name='Home' component={Home}
             
             options={{
+                header: () => <Header/>,
                 tabBarIcon:({focused}) => (
                 <View style={{alignItems:"center", justifyContent:"center"}}>
                 <Image
                 source={require('../../../../assets/icons/home.png')}
                 resizeMode="contain"
                 style={{
-                    width:50,
-                    height:50,
-                    tintColor:focused? '#BB377D': '#748c94' 
+                    width:100,
+                    height:100,
+                    tintColor:focused? '#6b0191': '#748c94' 
                 }}
                 />
-                <Text
-                style={{color: focused? '#BB377D': '#748c94', fontSize:12 }}
-                >
-                    Home
-                </Text>
+
             </View>)
 
             }}/>
@@ -82,15 +81,15 @@ const Tabs = () => {
             <Tab.Screen name='Cart' component={Cart}
 
                 options={{
-
+                    header: () => <Header/>,
                     tabBarIcon: ({focused}) => (
                         <Image source={require('../../../../assets/icons/cart.png')}
                         
                         resizeMode="contain"
 
                         style={{
-                            width:80,
-                            height:80,
+                            width:100,
+                            height:100,
                             tintColor:"#fff"
                         }}
                         />
@@ -104,22 +103,18 @@ const Tabs = () => {
             <Tab.Screen name='Profile' component={Profile}
             
             options={{
+                header: () => <Header/> ,
                 tabBarIcon:({focused}) => (
                 <View style={{alignItems:"center", justifyContent:"center"}}>
                 <Image
                 source={require('../../../../assets/icons/profile.png')}
                 resizeMode="contain"
                 style={{
-                    width:50,
-                    height:50,
-                    tintColor:focused? '#BB377D': '#748c94' 
+                    width:80,
+                    height:80,
+                    tintColor:focused? '#6b0191': '#748c94' 
                 }}
                 />
-                <Text
-                style={{color: focused? '#BB377D': '#748c94', fontSize:12 }}
-                >
-                    Profile
-                </Text>
             </View>)
 
             }}
