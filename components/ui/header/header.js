@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {Searchbar} from 'react-native-paper';
 
-import {View, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 import SearchIcon from '../custom/searchbar-icon/searchicon';
 
-const Header = () => {
+const Header = (props) => {
+
+
+
 
     const [query, setQuery] = useState('');
 
@@ -25,7 +28,7 @@ const Header = () => {
                     
                 }}
             />
-
+            <TouchableOpacity onPress={props.onPress}>
             <Image
                 source={require('../../../assets/logo/art.png')}
                 resizeMode="contain"
@@ -35,6 +38,7 @@ const Header = () => {
                     margin:10
                 }}
             />
+            </TouchableOpacity>
         </View>
 
     )

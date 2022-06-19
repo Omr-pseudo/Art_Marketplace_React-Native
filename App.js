@@ -6,9 +6,9 @@
  * @flow strict-local
  */
 
-import React,{useState} from 'react';
+import React from 'react';
 
-import {Provider} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 
 import {store} from './store/store';
 
@@ -20,27 +20,44 @@ import Auth from './containers/Auth/auth';
 
 
 
-  let routes = (<Auth/>);
+
 
 
 const App = () => {
 
-  const [logged, setLogged] = useState(true);
+  const authData = useSelector((state)=>{
+    return {
+      isAuth:state.auth.token !=null,
+      token: state.auth.token
+    }
+  });
+
+  let routes = (<Auth/>);
+
   
-  if(logged){
+  if(authData.isAuth){
+  
     routes = (
       <Tabs/>
     )
   }
 
   return (
-      <Provider store={store}>
         <NavigationContainer>
           {routes}
         </NavigationContainer>
-        </Provider>  
+        
   );
 };
 
+const AppWrapper = () => {
 
-export default App;
+  return (
+    <Provider store={store}> 
+      <App /> 
+    </Provider>
+  )
+}
+
+
+export default AppWrapper;

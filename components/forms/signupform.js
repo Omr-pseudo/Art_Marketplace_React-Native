@@ -6,27 +6,22 @@ import { View,Text, StyleSheet,TextInput, Image,TouchableWithoutFeedback,Keyboar
 import RegularButton from '../../components/ui/buttons/regular-button/regularButton';
 
 
-
-
-
 const SignupForm = (props) => {
 
-
-
+   
     return(
 
         
             <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss}>
             <View style={styles.container}>
             <Image style={styles.image} resizeMode="contain" source={require("../../assets/icons/sign.png")} />
-            <Text style={styles.label}>Name</Text>
-            <TextInput style={styles.input} textContentType="name" />
+            <Text style={styles.message}>{props.error?"Something went wrong. Please try again, maybe with new email or password.":null}</Text>
             <Text style={styles.label}>Email</Text>
-            <TextInput style={styles.input} textContentType="emailAddress"  />
+            <TextInput style={styles.input} textContentType="emailAddress"  onChangeText={props.emailHandler} />
             <Text style={styles.label}>Password</Text>
-            <TextInput style={styles.input} secureTextEntry={true} textContentType="password" />
+            <TextInput style={styles.input} secureTextEntry={true} textContentType="password" onChangeText={props.passwordHandler} />
             <View style={styles.buttonContainer}>
-            <RegularButton title="SIGNUP"/>
+            <RegularButton title="SIGNUP" onPress={props.onPress}/>
             </View>
             </View>
             </TouchableWithoutFeedback>
@@ -61,11 +56,19 @@ buttonContainer:{
 },
 image:{
     
-    height:200,
-    width:200,
+    height:240,
+    width:240,
     justifyContent:"center",
     alignSelf:"center"
 },
+message:{
+    marginTop:1,
+    fontFamily:"SpaceMono-Bold",
+    fontSize:10,
+    color:"#de86ff",
+    textAlign:"center"
+}
+,
 label:{
     marginTop:6,
     fontFamily:"SpaceMono-Bold",

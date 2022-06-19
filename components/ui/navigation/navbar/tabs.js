@@ -4,6 +4,10 @@ import {StyleSheet,View,Text,Image, TouchableOpacity} from 'react-native';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import {logout} from '../../../../store/actions/index';
+ 
+import {useDispatch} from "react-redux";
+
 
 
 import Header from '../../header/header';
@@ -13,6 +17,9 @@ import Home from '../../../../containers/Home/home';
 import Cart from "../../../../containers/Cart/cart";
 
 import Profile from '../../../../containers/Profilling/userProfile';
+
+
+
 
 const Tab = createBottomTabNavigator();
 
@@ -40,7 +47,18 @@ const CustomTabBarButton = ({children, onPress}) => (
     </TouchableOpacity>
 )
 
-const Tabs = () => {    
+const Tabs = () => {   
+    
+    const dispatch = useDispatch();
+    
+    
+    const logoutHandler = () => {
+        dispatch(logout());
+        console.log("HEllo");
+    };
+
+
+    
 
     return (
         <Tab.Navigator 
@@ -61,7 +79,7 @@ const Tabs = () => {
             <Tab.Screen name='Home' component={Home}
             
             options={{
-                header: () => <Header/>,
+                header: () => <Header onPress={logoutHandler}/>,
                 tabBarIcon:({focused}) => (
                 <View style={{alignItems:"center", justifyContent:"center"}}>
                 <Image
@@ -81,7 +99,7 @@ const Tabs = () => {
             <Tab.Screen name='Cart' component={Cart}
 
                 options={{
-                    header: () => <Header/>,
+                    header: () => <Header onPress={logoutHandler}/>,
                     tabBarIcon: ({focused}) => (
                         <Image source={require('../../../../assets/icons/cart.png')}
                         
@@ -103,7 +121,7 @@ const Tabs = () => {
             <Tab.Screen name='Profile' component={Profile}
             
             options={{
-                header: () => <Header/> ,
+                header: () => <Header onPress={logoutHandler}/> ,
                 tabBarIcon:({focused}) => (
                 <View style={{alignItems:"center", justifyContent:"center"}}>
                 <Image
