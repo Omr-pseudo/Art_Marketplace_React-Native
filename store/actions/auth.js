@@ -32,10 +32,6 @@ export const authFail = (error) => {
 
 export const logout = () => {
 
-    localStorage.removeItem('token');
-    localStorage.removeItem('expirationDate');
-    localStorage.removeItem('userId');
-
     return {
         type: actionTypes.AUTH_LOGOUT
     }
@@ -66,10 +62,10 @@ export const auth = (email, password, isSignup) => {
             returnSecureToken: true
         }
 
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAi1wNrqffH8GJL1O44P9rHCVesvbbuFIw';
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDgrT06cJpEP75uY3m_jLqFHdEt5Dfcq1I';
         
         if(!isSignup){
-             url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAi1wNrqffH8GJL1O44P9rHCVesvbbuFIw'
+             url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDgrT06cJpEP75uY3m_jLqFHdEt5Dfcq1I'
         }
 
 
@@ -77,10 +73,6 @@ export const auth = (email, password, isSignup) => {
         .then(response => {
          
             const expirationDate = new Date( new Date().getTime() + response.data.expiresIn * 1000);
-
-            localStorage.setItem('token',response.data.idToken);
-            localStorage.setItem('expirationDate', expirationDate);
-            localStorage.setItem('userId', response.data.localId);
 
             dispatch(authSuccess(response.data.idToken, response.data.localId));
             dispatch(checkAuthTimeout(response.data.expiresIn))

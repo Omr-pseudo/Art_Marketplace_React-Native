@@ -5,7 +5,9 @@ import { View,Text, StyleSheet,TextInput, Image, TouchableWithoutFeedback,Keyboa
 
 import RegularButton from '../../components/ui/buttons/regular-button/regularButton';
 
+import {useSelector,useDispatch} from "react-redux";
 
+import {auth} from '../../store/actions/index';
 
 
 
@@ -19,12 +21,13 @@ const LoginForm = (props) => {
             <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss}>
             <View style={styles.container}>
             <Image style={styles.image} resizeMode="contain" source={require("../../assets/icons/login.png")} />
+            <Text style={styles.message}>{props.error?"Something went wrong. Please try again, maybe with new email or password.":null}</Text>
             <Text style={styles.label}>Email</Text>
-            <TextInput style={styles.input} textContentType="emailAddress"  />
+            <TextInput style={styles.input} textContentType="emailAddress"  onChangeText={props.emailHandler} />
             <Text style={styles.label}>Password</Text>
-            <TextInput style={styles.input} secureTextEntry={true} textContentType="password" />
+            <TextInput style={styles.input} secureTextEntry={true} textContentType="password" onChangeText={props.passwordHandler} />
             <View style={styles.buttonContainer}>
-            <RegularButton title="LOGIN"/>
+            <RegularButton title="LOGIN" onPress={props.onPress}/>
             </View>
             </View>
             </TouchableWithoutFeedback>
@@ -59,10 +62,17 @@ const styles = StyleSheet.create({
     },
     image:{
         
-        height:240,
-        width:240,
+        height:220,
+        width:220,
         justifyContent:"center",
         alignSelf:"center"
+    },
+    message:{
+        marginTop:1,
+        fontFamily:"SpaceMono-Bold",
+        fontSize:10,
+        color:"#de86ff",
+        textAlign:"center"
     },
     label:{
         marginTop:20,
