@@ -19,26 +19,26 @@ const ProfileScreen = ({navigation}) => {
                     <Image style={styles.dp} resizeMode="contain" source={require("../../assets/images/ph.png")} /> 
                     <Text style={styles.username}>Unnamed</Text>
                     <Text style={styles.dated}>Joined 2022</Text>
-           
+                    <View style={styles.row}>
+                    <IconButton 
+          
+                                onPress={()=>navigation.navigate("ComplainScreen")}
+
+                                icon={()=><Image 
+                                  source={require('../../assets/icons/reportw.png')}
+                                  resizeMode="contain"
+                                  style={{width:40,height:40}}
+                                  />}
+                                
+                                  style={styles.report}
+                                />
+                    </View>           
+
                  </View>
                  <ScrollView>
 
                  <View style={styles.body}> 
-
-                 <IconButton 
-          
-                      onPress={()=>navigation.navigate("ComplainScreen")}
-          
-                      icon={()=><Image 
-                        source={require('../../assets/icons/reportw.png')}
-                        resizeMode="contain"
-                        style={{width:50,height:50}}
-                        />}
-                      
-                        style={styles.report}
-                      />
-
-                      
+     
                    <MainButton title="CREATE" color="#de86ff"
 
                     onPress={() => navigation.navigate("CreateScreen")}
@@ -128,10 +128,16 @@ const styles = StyleSheet.create({
         flexDirection:"column"
 
       },
+      row:{
+        flexDirection:"row",
+        width:"100%",
+        justifyContent:"flex-end",
+        marginRight:20
+      }
+      ,
       report:{
-        width:60,
-        height:60, 
-        alignSelf:"flex-end", 
+        width:50,
+        height:50, 
         backgroundColor:"#66018a",
         elevation:5,
         borderRadius:66
