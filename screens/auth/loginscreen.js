@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 
-import { LogBox } from 'react-native';
-
-import {StyleSheet} from 'react-native';
+import { LogBox,StyleSheet,TouchableWithoutFeedback,Keyboard } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -65,9 +63,11 @@ const LoginScreen = ({route,navigation}) => {
 
 
     return(
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <LinearGradient colors={["#de86ff","#66018a"]}  style={styles.container}>
               <LoginForm onPress={onSignupHandler} error={JSON.stringify(err)} emailHandler={(value)=>setEmail(value)}  passwordHandler={(value)=>setPassword(value)}/> 
         </LinearGradient>
+        </TouchableWithoutFeedback>
     )
 }
 

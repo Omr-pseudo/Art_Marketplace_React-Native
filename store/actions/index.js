@@ -3,6 +3,12 @@ export {
     auth,
     logout,
     onAuthRedirectPath,
-    authStateCheck
+    authStateCheck,
+    removeError
 }
 from './auth';
+
+export {
+    initProducts,
+    fetchUserProduct
+} from './products';

@@ -13,12 +13,14 @@ import Card from '../../components/ui/cards/thumbnail/smallcard';
 
 const ProfileScreen = ({navigation}) => {
 
+    const [touch,setTouch] = useState(false);
+
     return(
         <LinearGradient colors={["#de86ff","#66018a"]}  style={styles.container}>
                 <View style={styles.header}>  
-                    <Image style={styles.dp} resizeMode="contain" source={require("../../assets/images/ph.png")} /> 
-                    <Text style={styles.username}>Unnamed</Text>
-                    <Text style={styles.dated}>Joined 2022</Text>
+                    <Image style={touch?styles.smalllDp:styles.dp} resizeMode="contain" source={require("../../assets/images/ph.png")} /> 
+                    <Text style={touch?styles.smallUsername:styles.username}>Unnamed</Text>
+                    <Text style={touch?styles.smallDated:styles.dated}>Joined 2022</Text>
                     <View style={styles.row}>
                     <IconButton 
           
@@ -35,7 +37,17 @@ const ProfileScreen = ({navigation}) => {
                     </View>           
 
                  </View>
-                 <ScrollView>
+                 <ScrollView 
+                 
+                 onScrollBeginDrag={()=>{
+                  setTouch(true)
+                 }}
+
+                 onTouchEnd={()=>{
+                  setTouch(false)
+                 }}
+                 
+                 >
 
                  <View style={styles.body}> 
      
@@ -108,6 +120,34 @@ const styles = StyleSheet.create({
         fontFamily:"SpaceMono",
         fontWeight:"normal",
         fontSize:20,
+        color:"#de86ff"
+      },
+      smalllDp:{
+        marginTop:"2%",
+        width:40,
+        height:40,
+        borderWidth:8,
+        borderRadius:64,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.32,
+        shadowRadius: 5.46,
+           
+      },
+      smallUsername:{
+        paddingTop:"1%",
+        fontFamily:"SpaceMono",
+        fontWeight:"bold",
+        fontSize:16
+      },
+      smallDated:{
+        paddingTop:"1%",
+        fontFamily:"SpaceMono",
+        fontWeight:"normal",
+        fontSize:12,
         color:"#de86ff"
       },
       body: {

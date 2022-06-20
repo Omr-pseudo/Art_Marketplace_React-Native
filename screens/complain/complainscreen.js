@@ -9,11 +9,13 @@ import ComplainForm from '../../components/forms/complainform';
 const ComplainScreen = ({navigation}) => {
 
     return(
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <LinearGradient colors={["#de86ff","#66018a"]}  style={styles.container}>
                 
               <ComplainForm/>
 
         </LinearGradient>
+        </TouchableWithoutFeedback>
     )
 }
 

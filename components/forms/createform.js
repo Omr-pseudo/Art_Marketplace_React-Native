@@ -1,48 +1,38 @@
 import React from "react";
 
-import { View,Text, StyleSheet,TextInput, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
-
-import {launchImageLibrary} from'react-native-image-picker';
+import { View,Text, StyleSheet,Image,TextInput, TouchableOpacity} from "react-native";
 
 import RegularButton from '../../components/ui/buttons/regular-button/regularButton';
 
 
 
-
-
-const options = {
-    title: 'Select Image',
-    type: 'library',
-    options: {
-      maxHeight: 200,
-      maxWidth: 200,
-      selectionLimit: 1,
-      mediaType: 'photo',
-      includeBase64: false
-    }
-}
-
-
-
 const CreateForm = (props) => {
 
+    let uploadComponent = (
+        <Text style={styles.selectorText}>BROWSE</Text>
+    );
 
+    if(props.image){
+        
+        uploadComponent=(
+            
+        <Image 
+        
+        style={{width:"40%",height:"40%"}}
 
-    const openGallery = async ()=>{
-
-        const image = await launchImageLibrary(options);
-        console.log(image);
+        source={{uri:props.image}} />
+        ); 
     }
 
+
     return(
-        <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss}>
         <View style={styles.container}>
             <Text style={styles.label}>Upload</Text>
+            <TouchableOpacity onPress={props.onPress}>
             <View style={styles.fileSelector} >
-                <TouchableOpacity onPress={openGallery}>
-                <Text style={styles.selectorText}>BROWSE</Text>
-                </TouchableOpacity>
+            {uploadComponent} 
             </View>
+            </TouchableOpacity>
             <Text style={styles.label}>Title</Text>
             <TextInput style={styles.input}/>
             <Text style={styles.label}>Description</Text>
@@ -50,10 +40,9 @@ const CreateForm = (props) => {
             <Text style={styles.label}>Price</Text>
             <TextInput style={styles.input}/>
             <View style={styles.buttonContainer}>
-            <RegularButton title="LIST"/>
+            <RegularButton title="LIST" onPress={props.onPressSubmit}/>
             </View>
         </View>
-        </TouchableWithoutFeedback>
     )
 }
             

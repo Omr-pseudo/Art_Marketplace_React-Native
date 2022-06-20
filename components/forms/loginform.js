@@ -1,24 +1,34 @@
-import React from "react";
+import React,{useEffect} from "react";
 
-import { View,Text, StyleSheet,TextInput, Image,TouchableWithoutFeedback,Keyboard} from "react-native";
+import { View,Text, StyleSheet,TextInput, Image} from "react-native";
 
 
 import RegularButton from '../../components/ui/buttons/regular-button/regularButton';
 
-import {useSelector,useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
 
-import {auth} from '../../store/actions/index';
+import {removeError} from '../../store/actions/index';
 
 
 
 const LoginForm = (props) => {
 
+    const dispatch = useDispatch();
+
+
+    useEffect(()=>{
+        
+        if(props.error){
+            dispatch(removeError());
+        }
+
+    },[])
+
 
 
     return(
 
-        
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss()}>
+    
             <View style={styles.container}>
             <Image style={styles.image} resizeMode="contain" source={require("../../assets/icons/login.png")} />
             <Text style={styles.message}>{props.error?"Something went wrong. Please try again, maybe with new email or password.":null}</Text>
@@ -30,8 +40,6 @@ const LoginForm = (props) => {
             <RegularButton title="LOGIN" onPress={props.onPress}/>
             </View>
             </View>
-        </TouchableWithoutFeedback>    
-            
         
     )
 }

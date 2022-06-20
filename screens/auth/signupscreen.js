@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import { LogBox } from 'react-native';
 
-import {StyleSheet} from 'react-native';
+import {StyleSheet,Keyboard,TouchableWithoutFeedback} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -59,11 +59,13 @@ const SignupScreen = ({route,navigation}) => {
 
 
     return(
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <LinearGradient colors={["#de86ff","#66018a"]}  style={styles.container}>
                 
               <SignupForm onPress={onSignupHandler} error={JSON.stringify(err)} emailHandler={(value)=>setEmail(value)}  passwordHandler={(value)=>setPassword(value)} />
 
         </LinearGradient>
+        </TouchableWithoutFeedback>
     )
 }
 

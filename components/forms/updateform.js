@@ -1,6 +1,6 @@
 import React from "react";
 
-import { View,Text, StyleSheet,TextInput, TouchableOpacity, TouchableWithoutFeedback} from "react-native";
+import { View,Text, StyleSheet,TextInput, TouchableOpacity} from "react-native";
 
 import {launchImageLibrary} from'react-native-image-picker';
 
@@ -36,7 +36,6 @@ const UpdateForm = (props) => {
 
     return(
 
-        <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss}>
         <View style={styles.container}>
             <Text style={styles.label}>Upload</Text>
             <View style={styles.fileSelector} >
@@ -54,7 +53,6 @@ const UpdateForm = (props) => {
             <RegularButton title="DONE"/>
             </View>
         </View>
-        </TouchableWithoutFeedback>
     )
 }
             

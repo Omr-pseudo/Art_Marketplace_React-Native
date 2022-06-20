@@ -1,18 +1,36 @@
-import React from "react";
+import React,{useEffect} from "react";
 
-import { View,Text, StyleSheet,TextInput, Image,TouchableWithoutFeedback,Keyboard} from "react-native";
+import { View,Text, StyleSheet,TextInput, Image} from "react-native";
 
 
 import RegularButton from '../../components/ui/buttons/regular-button/regularButton';
 
+import {useDispatch} from "react-redux";
+
+import {removeError} from '../../store/actions/index';
+
+
 
 const SignupForm = (props) => {
+
+
+    const dispatch = useDispatch();
+
+
+    useEffect(()=>{
+        
+        if(props.error){
+            dispatch(removeError());
+            console.log("Error");
+        }
+
+    },[])
 
    
     return(
 
         
-            <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss}>
+            
             <View style={styles.container}>
             <Image style={styles.image} resizeMode="contain" source={require("../../assets/icons/sign.png")} />
             <Text style={styles.message}>{props.error?"Something went wrong. Please try again, maybe with new email or password.":null}</Text>
@@ -24,7 +42,6 @@ const SignupForm = (props) => {
             <RegularButton title="SIGNUP" onPress={props.onPress}/>
             </View>
             </View>
-            </TouchableWithoutFeedback>
         
     )
 }

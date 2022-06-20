@@ -34,6 +34,12 @@ const onAuthRedirectPath = (state, action) => {
 
 };
 
+const onRemoveError = (state, action) => {
+    return updateObject(state, {error:null})
+
+};
+
+
 
 const reducer = (state={initialState},action) => {
 
@@ -43,7 +49,7 @@ const reducer = (state={initialState},action) => {
         case(actionTypes.AUTH_SUCCESS): return authSuccess(state, action);
         case(actionTypes.AUTH_FAIL): return authFail(state, action);
         case(actionTypes.AUTH_LOGOUT): return autLogout(state, action);
-        case(actionTypes.AUTH_REDIRECT_PATH): return onAuthRedirectPath(state, action);
+        case(actionTypes.ON_REMOVE_ERROR): return onRemoveError(state, action);
         default:
             return state;
     }
