@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     buttonContainer:{
         width:"80%",
         alignSelf:"center",
-        paddingTop:12
+        paddingTop:26
     },
     label:{
         marginTop:2,

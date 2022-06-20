@@ -32,6 +32,7 @@ const App = () => {
     }
   });
 
+  console.log(authData.token);
   let routes = (<Auth/>);
 
   

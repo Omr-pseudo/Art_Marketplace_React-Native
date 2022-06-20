@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     fileSelector:{
 
         marginTop:6,
-        width:230,
+        width:206,
         height:50,
         justifyContent:"center",
         alignItems:"center",

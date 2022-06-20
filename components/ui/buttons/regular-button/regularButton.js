@@ -25,8 +25,8 @@ style={{
 labelStyle={{
     
     fontFamily:"HeartlandSans",
-    fontSize:18,
-    letterSpacing:4,
+    fontSize:12,
+    letterSpacing:2,
     color:"#ffffff"
 }}
 

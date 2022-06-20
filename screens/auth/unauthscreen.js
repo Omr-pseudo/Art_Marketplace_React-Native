@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex:1,
+        paddingBottom:24,
         justifyContent:"space-evenly",
         alignItems:"center"
     },
@@ -56,12 +57,11 @@ const styles = StyleSheet.create({
     },
     heading:{
         fontFamily:"SpaceMono-Bold",
-        fontSize:32,
+        fontSize:27,
         color:"#ffffff"
     },
     subheading:{
 
-        fontFamily:"SpaceMono-Fill",
         fontSize:18,
         color:"#de86ff"
     },

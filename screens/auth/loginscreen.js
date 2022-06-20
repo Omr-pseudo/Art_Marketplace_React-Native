@@ -66,9 +66,7 @@ const LoginScreen = ({route,navigation}) => {
 
     return(
         <LinearGradient colors={["#de86ff","#66018a"]}  style={styles.container}>
-                
-              <LoginForm onPress={onSignupHandler} error={JSON.stringify(err)} emailHandler={(value)=>setEmail(value)}  passwordHandler={(value)=>setPassword(value)}/>
-
+              <LoginForm onPress={onSignupHandler} error={JSON.stringify(err)} emailHandler={(value)=>setEmail(value)}  passwordHandler={(value)=>setPassword(value)}/> 
         </LinearGradient>
     )
 }
