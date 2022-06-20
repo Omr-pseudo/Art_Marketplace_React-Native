@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {StyleSheet} from 'react-native';
+import {StyleSheet,Keyboard,TouchableWithoutFeedback} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -9,11 +9,13 @@ import UpdateForm from '../../components/forms/updateform';
 const UpdateScreen = ({navigation}) => {
 
     return(
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <LinearGradient colors={["#de86ff","#66018a"]}  style={styles.container}>
                 
               <UpdateForm/>
 
         </LinearGradient>
+        </TouchableWithoutFeedback>
     )
 }
 

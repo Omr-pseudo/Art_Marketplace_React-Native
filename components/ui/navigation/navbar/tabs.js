@@ -54,7 +54,6 @@ const Tabs = () => {
     
     const logoutHandler = () => {
         dispatch(logout());
-        console.log("HEllo");
     };
 
 

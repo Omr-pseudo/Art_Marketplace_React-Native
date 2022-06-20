@@ -27,16 +27,14 @@ const App = () => {
 
   const authData = useSelector((state)=>{
     return {
-      isAuth:state.auth.token !=null,
-      token: state.auth.token
+      isAuth:state.auth.token !=null
     }
   });
 
-  console.log(authData.token);
   let routes = (<Auth/>);
 
   
-  if(authData.isAuth){
+  if(!authData.isAuth){
   
     routes = (
       <Tabs/>

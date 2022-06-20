@@ -37,6 +37,13 @@ export const logout = () => {
     }
 } 
 
+export const removeError = () => {
+
+    return {
+        type: actionTypes.ON_REMOVE_ERROR
+    }
+} 
+
 export const checkAuthTimeout = (time) => {
 
     return dispatch => {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { View,Text, StyleSheet,TextInput, Image,TouchableWithoutFeedback,Keyboard} from "react-native";
+import { View,Text, StyleSheet,TextInput, Image} from "react-native";
 
 
 import RegularButton from '../../components/ui/buttons/regular-button/regularButton';
@@ -16,7 +16,6 @@ const ComplainForm = (props) => {
     return(
 
         
-            <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss}>
             <View style={styles.container}>
             <Image  
                 
@@ -34,7 +33,6 @@ const ComplainForm = (props) => {
             <RegularButton title="SEND"/>
             </View>
             </View>
-            </TouchableWithoutFeedback>
         
     )
 }
