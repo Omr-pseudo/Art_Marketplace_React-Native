@@ -1,8 +1,10 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 
-import {StyleSheet, View,Image, ScrollView} from 'react-native';
+import {StyleSheet, View,Image,FlatList} from 'react-native';
 
 import {Text, IconButton} from 'react-native-paper'; 
+
+import {useSelector} from 'react-redux';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -10,10 +12,36 @@ import MainButton from '../../components/ui/buttons/main-button/mainbutton';
 
 import Card from '../../components/ui/cards/thumbnail/smallcard';
 
+import axios from 'axios';
+
 
 const ProfileScreen = ({navigation}) => {
 
+  const Data = useSelector((state)=>{
+    return{
+        prods:state.prods.products,
+        id:state.auth.userId
+    }
+});
+
+
     const [touch,setTouch] = useState(false);
+
+    const userProds = [];
+
+    
+    useEffect(()=>{
+
+      console.log(Data.prods);
+      for(let key in Data.prods){
+        
+
+          if(Data.prods[key].userId===Data.id){
+              userProds.push(Data.prods[key]);
+          }
+      }
+    },[]);
+
 
     return(
         <LinearGradient colors={["#de86ff","#66018a"]}  style={styles.container}>
@@ -37,18 +65,7 @@ const ProfileScreen = ({navigation}) => {
                     </View>           
 
                  </View>
-                 <ScrollView 
-                 
-                 onScrollBeginDrag={()=>{
-                  setTouch(true)
-                 }}
-
-                 onTouchEnd={()=>{
-                  setTouch(false)
-                 }}
-                 
-                 >
-
+             
                  <View style={styles.body}> 
      
                    <MainButton title="CREATE" color="#de86ff"
@@ -64,15 +81,31 @@ const ProfileScreen = ({navigation}) => {
                 
                  <View styles={styles.cards}>
 
-                   <Card title="new" price="1200 P K R"  onPress={()=>{navigation.navigate("UserDetailScreen")}}/>
+                 <FlatList
+                
+                onScrollBeginDrag={()=>{
+                  setTouch(true)
+                 }}
 
-                   <Card title="new" price="1200 P K R"  onPress={()=>{navigation.navigate("UserDetailScreen")}}/>
+                 onTouchEnd={()=>{
+                  setTouch(false)
+                 }}                  
+
+                data={userProds}
+
+                renderItem={({item,index})=>(
+
+                    <Card title={item.title} price={`${item.price} P K R `} onPress={()=>navigation.navigate('ProductDetailScreen',{
+
+                        id:item.id
+                    })} />
+                    )}
+                
+                />
 
                    
-
                 </View>
 
-                </ScrollView>
        
                 <View style={{width:"100%", height:"12%"}}>
                 </View>

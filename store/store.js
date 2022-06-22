@@ -5,10 +5,13 @@ import {createStore,combineReducers,applyMiddleware} from 'redux';
 
 import authReducer from './reducers/auth';
 
+import prodReducer from './reducers/products';
+
 
 
 const rootReducer = combineReducers({
-    auth:authReducer
+    auth:authReducer,
+    prods:prodReducer
 
 });
 

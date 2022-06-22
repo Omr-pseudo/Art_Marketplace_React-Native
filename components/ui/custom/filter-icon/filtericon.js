@@ -11,8 +11,8 @@ const FilterIcon = () => {
                 source={require('../../../../assets/icons/filter.png')}
                 resizeMode="contain"
                 style={{
-                    width:30,
-                    height:30
+                    width:20,
+                    height:20
                 }}
             />
         </View>

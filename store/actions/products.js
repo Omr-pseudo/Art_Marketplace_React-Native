@@ -1,5 +1,7 @@
 import * as actionTypes from './action-types';
 
+import axios from 'axios';
+
 
 export const fetchUserProductSuccess = (UserProduct) => {
 
@@ -52,7 +54,7 @@ export const fetchUserProduct = (token, userId) => {
 
 export const setProducts = (Products) => {
     return {
-        type: actionTypes.SET_Products,
+        type: actionTypes.SET_PRODUCTS,
         Products: Products
     }
 }
@@ -67,10 +69,21 @@ export const initProducts = () => {
     
 return dispatch  => {
    
-     axios.get("https://burger--builder-1cc60-default-rtdb.firebaseio.com/Products.json")
+     axios.get("https://art-marketplace-72dee-default-rtdb.firebaseio.com/:pieces.json")
         .then(response => {
+
+            const fetchedUserProduct = [];
+
+            for( let key in response.data ){
+
+             fetchedUserProduct.push({
+                ...response.data[key],
+                id: key
+                })
+            }    
+
             
-            dispatch(setProducts(response.data));
+            dispatch(setProducts(fetchedUserProduct));
         })
         .catch(error => {
             dispatch(fetchProductsFailed());

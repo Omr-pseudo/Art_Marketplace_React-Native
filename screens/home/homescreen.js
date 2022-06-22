@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 
-import {StyleSheet, View, ScrollView, Image} from 'react-native';
+import {StyleSheet, View, ScrollView, Image,FlatList} from 'react-native';
+
+import {useSelector,useDispatch} from 'react-redux';
 
 import {Text, IconButton} from 'react-native-paper'; 
 
@@ -10,7 +12,25 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import Card from '../../components/ui/cards/thumbnail/smallcard';
 
+import {initProducts} from "../../store/actions/index";
+
+
 const HomeScreen = ({navigation}) => {
+
+    const Data = useSelector((state)=>{
+        return{
+            prods:state.prods.products,
+            id:state.auth.userId
+        }
+    });
+
+    const dispatch = useDispatch();
+
+
+    useEffect(()=>{
+        dispatch(initProducts());
+    },[])
+
 
     const [selectedFilter, selectFilter] = useState("Popular");
 
@@ -27,26 +47,47 @@ const HomeScreen = ({navigation}) => {
                 <Text style={styles.filterText} >{filter[0]}</Text>
 
                 <IconButton icon={() => <FilterIcon/>} style={styles.iconText}/>
+            
+                
+            </View>
+            <View style={styles.iconButtonContainer}>
+                    <IconButton 
+                
+                    icon={()=><Image 
+                    source={require('../../assets/icons/reportw.png')}
+                    resizeMode="contain"
+                    style={{width:50,height:50}}
+                    />}
+                
+                    style={styles.report}
+                
+                    onPress={()=>navigation.navigate("ComplainScreen")}
+                
+                />
             </View>
             <View style={styles.productsContainer}>
+               
+                <FlatList
                 
+                data={Data.prods?Data.prods:[]}
+
+                renderItem={({item,index})=>(
+
+                    <Card title={item.title} price={`${item.price} P K R `} onPress={()=>navigation.navigate('ProductDetailScreen',{
+
+                        id:item.id
+                    })} />
+                    )}
                 
-            <IconButton 
+                />
+            
            
-           icon={()=><Image 
-             source={require('../../assets/icons/reportw.png')}
-             resizeMode="contain"
-             style={{width:50,height:50}}
-             />}
-           
-             style={styles.report}
-           
-             onPress={()=>navigation.navigate("ComplainScreen")}
-           
-           />
-           
-           <Card title="new" price="1200 P K R" onPress={()=>navigation.navigate('ProductDetailScreen')} />     
+                
             </View>
+            <View style={{height:140}}>
+
+            </View>
+            
         </LinearGradient>
     )
 }
@@ -58,7 +99,7 @@ const styles = StyleSheet.create({
     },
     filterText:{
         fontFamily:"LeagueSpartan",
-                    fontSize:46,
+                    fontSize:34,
                     fontWeight:"bold"
     },
     filterContainer: {
@@ -70,8 +111,8 @@ const styles = StyleSheet.create({
 
         backgroundColor:"#ffffff",
         borderRadius:5,
-        width:45,
-        height:45
+        width:30,
+        height:30
     },
     report:{
       width:60,
@@ -79,7 +120,16 @@ const styles = StyleSheet.create({
       alignSelf:"flex-start", 
       backgroundColor:"#66018a",
       elevation:5,
-      borderRadius:66
+      borderRadius:66,
+      alignSelf:"flex-end"
+    },
+    iconButtonContainer:{
+        flex:0.25,
+        padding:12,
+    },
+    productsContainer:{
+        flex:1,
+        paddingTop:"16%"
     }
 
     

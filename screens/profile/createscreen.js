@@ -1,5 +1,7 @@
 import React,{useState} from 'react';
 
+import axios from 'axios';
+
 import {StyleSheet,Keyboard,TouchableWithoutFeedback} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -28,15 +30,27 @@ const options = {
 }
 
 
-const CreateScreen = ({navigation}) => {
+const CreateScreen = ({route, navigation}) => {
+
+    const {err }= route?.params || {};
+
 
     const authData = useSelector((state)=>{
         return{
-            token:state.auth.token
+            id:state.auth.userId
         }
     })
 
+
+
     const [image, setImage] = useState("");
+
+    const [title, setTitle] = useState("");
+    
+    const [desc, setDesc] = useState("");
+
+    const [price, setPrice] = useState("");
+
 
 
     const openGallery = async ()=>{
@@ -49,22 +63,46 @@ const CreateScreen = ({navigation}) => {
 
     const onSubmitHandler = async () => {
 
-        if(image){
+        if(!(image)||!(title)||!(desc)||!(price)){
+
+           return  navigation.navigate("CreateScreen",{err:"left empty"});
+        }
+
+            const piecesData = {
+                title:title,
+                desc:desc,
+                price:Number(price),
+                userId:authData.id
+            }
 
             const uri = image;
             console.log(uri);
-            let name = authData.token+uri.substring(uri.lastIndexOf("/")+1);
+            let name = authData.id+uri.substring(uri.lastIndexOf("-")+1);
 
             console.log(name);
 
             const imageRef = ref(storage, `images/${name}`);
 
             uploadBytes(imageRef,uri).then(()=>{
-                console.log("uploaded");
+
+                
+                
+                axios.post("https://art-marketplace-72dee-default-rtdb.firebaseio.com/:pieces.json",piecesData)
+                
+                .then(response => {
+                    console.log(response, "uploaded");
+                    navigation.goBack();
+
+                }).catch((e)=>{
+                    console.log(authData.id);
+                    console.log(e);
+                })
+                
+                
             }).catch((e)=> {
                 console.log(e)
             });
-        }
+        
 
     }
 
@@ -72,7 +110,18 @@ const CreateScreen = ({navigation}) => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <LinearGradient colors={["#de86ff","#66018a"]}  style={styles.container}>
                 
-              <CreateForm onPress={openGallery} image={image} onPressSubmit={onSubmitHandler}/>
+              <CreateForm onPress={openGallery} 
+                        image={image} 
+                        onPressSubmit={onSubmitHandler}
+                        
+                        titleChanged={(val) => setTitle(val)}
+
+                        descChanged={(val) => setDesc(val)}
+
+                        priceChanged={(val) => setPrice(val)}
+                        
+                        error={JSON.stringify(err)}
+                        />
 
         </LinearGradient>
         </TouchableWithoutFeedback>

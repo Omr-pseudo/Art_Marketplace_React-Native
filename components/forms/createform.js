@@ -8,6 +8,8 @@ import RegularButton from '../../components/ui/buttons/regular-button/regularBut
 
 const CreateForm = (props) => {
 
+    let error = (<Text style={styles.labelErr}>Please fill up all fields</Text>)
+
     let uploadComponent = (
         <Text style={styles.selectorText}>BROWSE</Text>
     );
@@ -33,12 +35,13 @@ const CreateForm = (props) => {
             {uploadComponent} 
             </View>
             </TouchableOpacity>
+            {props.error?error:null}
             <Text style={styles.label}>Title</Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input} onChangeText={props.titleChanged}/>
             <Text style={styles.label}>Description</Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input} onChangeText={props.descChanged}/>
             <Text style={styles.label}>Price</Text>
-            <TextInput style={styles.input}/>
+            <TextInput style={styles.input} onChangeText={props.priceChanged}/>
             <View style={styles.buttonContainer}>
             <RegularButton title="LIST" onPress={props.onPressSubmit}/>
             </View>
@@ -98,6 +101,13 @@ const styles = StyleSheet.create({
         backgroundColor:"#D9D8D8",
         borderRadius:8,
         fontFamily:"HeartlandSans"
+    },
+    labelErr:{
+        marginTop:2,
+        fontFamily:"SpaceMono-Regular",
+        fontSize:8,
+        color:"#66018a",
+        textAlign:"center"
     }
 })
 

@@ -6,12 +6,13 @@ import { updateObject } from '../utility';
 const initialState = {
     products: [],
     userproducts: [],
+    productsError:false
 };
 
 
-const fetchUserProductStart = (state, action) => {
+const fetchSetProducts = (state, action) => {
     
-    return updateObject(state, {loading: true});
+    return updateObject(state, {products: action.Products});
 }
 
 const fetchUserProductSuccess = (state, action) => {
@@ -19,8 +20,8 @@ const fetchUserProductSuccess = (state, action) => {
     return updateObject( state, {loading: false, UserProduct: action.UserProduct});
 }
 
-const fetchUserProductFailed = (state, action) => {
-    return updateObject(state, {loading: false})
+const fetchProductFailed = (state, action) => {
+    return updateObject(state, {productsError: true})
 }
 
 
@@ -30,9 +31,8 @@ const reducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case actionsTypes.FETCH_UserProduct_START: return fetchUserProductStart(state, action);
-        case actionsTypes.FETCH_UserProduct_SUCCESS: return fetchUserProductSuccess(state, action);
-        case actionsTypes.FETCH_UserProduct_FAIL: return fetchUserProductFailed(state, action);
+        case actionsTypes.SET_PRODUCTS: return fetchSetProducts(state, action);
+        case actionsTypes.FETCH_Products_FAIL: return fetchProductFailed(state, action);
                 
         default:
             return state;
