@@ -2,6 +2,10 @@ export const FETCH_UserProduct_START = 'FETCH_UserProduct_START';
 export const FETCH_UserProduct_SUCCESS = 'FETCH_UserProduct_SUCCESS';
 export const FETCH_UserProduct_FAIL = 'FETCH_UserProduct_FAIL';
 
+
+export const SET_PRODUCTS = 'SET_Products';
+export const FETCH_Products_FAIL = 'FETCH_Products_FAIL';
+
 //------------------------------------Authentication---------------------------
 
 

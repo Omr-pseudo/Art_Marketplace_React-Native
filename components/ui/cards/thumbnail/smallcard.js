@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     container:{
             backgroundColor:"#ffffff",
             marginHorizontal:24,
-            marginVertical:26,
-            padding:18,
+            marginVertical:32,
+            padding:12,
             width:180,
             height:250,
             borderRadius:24,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
             elevation: 20,
     },
     title:{
-        fontSize:35,
+        fontSize:32,
         fontFamily:"SpaceMono-Regular",
         color:"#6b0191"
     },

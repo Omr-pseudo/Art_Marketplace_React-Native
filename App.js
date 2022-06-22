@@ -34,7 +34,7 @@ const App = () => {
   let routes = (<Auth/>);
 
   
-  if(!authData.isAuth){
+  if(authData.isAuth){
   
     routes = (
       <Tabs/>

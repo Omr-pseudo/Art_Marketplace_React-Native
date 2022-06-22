@@ -6,16 +6,36 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import BuyCard from '../../components/ui/cards/detailed/buycard';
 
-const ProductDetailScreen = ({navigation}) => {
+import {useSelector} from 'react-redux';
+
+
+const ProductDetailScreen = ({route,navigation}) => {
+
+    const {id}= route?.params || {}; 
+
+    const Data = useSelector((state)=>{
+        return{
+            prod:state.prods.products            
+        }})
+    
+    let item = ()=>{
+            for(let key in Data.prod){
+
+                if(Data.prod[key].id===id){
+                    return Data.prod[key];
+                }
+            }
+        
+    } 
 
     return(
         <LinearGradient colors={["#de86ff","#66018a"]} style={styles.container}>
                 <BuyCard 
-                    title="Loremss ipsum"
+                    title={item().title}
                     
-                    detail="Lorem ipsum dolor sit amet, consectetur  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    detail={item().desc}
 
-                    price="12000 P K R"
+                    price={`${item().price} P K R`}
                     />
         </LinearGradient>
     )
